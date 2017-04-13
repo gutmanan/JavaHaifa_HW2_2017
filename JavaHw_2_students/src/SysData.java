@@ -98,6 +98,8 @@ public class SysData {
 	 * @return The animal that was added, null if unsuccessful
 	 */
 	public Animal addAnimal(String species, String category) {
+		if (E_Category.getCategory(category) == null)
+			return null;
 		if (getAnimal(species, category) != null)
 			return null;
 		Animal animalToAdd = new Animal(species, E_Category.getCategory(category));
@@ -185,13 +187,13 @@ public class SysData {
 	 * @return True if sale was successful
 	 */
 	public boolean sellPet(String name, String species, String category, String phone) {
-		if (getAnimal(species, category) == null)		// Animal doesn't exists
+		if (getAnimal(species, category) == null) // Animal doesn't exists
 			return false;
-		Pet petC = getPet(name, getAnimal(species, category));	
-		if (petC == null)		// Pet not in petsInventory
+		Pet petC = getPet(name, getAnimal(species, category));
+		if (petC == null) // Pet not in petsInventory
 			return false;
 		Customer cust = getCustomer(phone);
-		if (cust == null)		// Customer doesn't exists
+		if (cust == null) // Customer doesn't exists
 			return false;
 
 		petC.setOwner(cust);
@@ -214,20 +216,20 @@ public class SysData {
 	 * @return True if pet returned successfully
 	 */
 	public boolean returnPet(String name, String species, String category) {
-		if (getAnimal(species, category) == null)		// Animal doesn't exists
+		if (getAnimal(species, category) == null) // Animal doesn't exists
 			return false;
 		Pet pet = new Pet(name, getAnimal(species, category));
 		boolean flag = true;
 		for (Pet p : soldPets)
 			if (p.equals(pet)) {
 				pet = p;
-				flag = false;		// if this pet in soldPets list
+				flag = false; // if this pet in soldPets list
 			}
-		if (flag)					// if this pet doesn't in soldPets list
+		if (flag) // if this pet doesn't in soldPets list
 			return false;
 
+		pet.getOwner().getPets().remove(pet);
 		pet.setOwner(null);
-		cust.getPets().remove(pet);
 		petsInventory.add(pet);
 		soldPets.remove(pet);
 		this.cash -= pet.getPrice();
@@ -242,6 +244,8 @@ public class SysData {
 	 * @return Animal from ArrayList, null if doesn't exists
 	 */
 	public Animal getAnimal(String species, String category) {
+		if (E_Category.getCategory(category) == null)
+			return null;
 		Animal animal = new Animal(species, E_Category.getCategory(category));
 		for (Animal an : animals)
 			if (an.equals(animal))
