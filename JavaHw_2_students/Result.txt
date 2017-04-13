@@ -1,0 +1,28 @@
+Added Customer [name=Eric Praline, phone=0551234567]
+Added Customer [name=John Cleese, phone=037654321]
+Added Customer [name=Michal Palin, phone=046546545]
+Nothing was added
+Added Animal [species=Parrot, category=Bird]
+Nothing was added
+Added Animal [species=Pug, category=Dog]
+Added Animal [species=Siberian Husky, category=Dog]
+Added Animal [species=Halibut, category=Fish]
+Nothing was added
+Added Pet [name=Polly, animal=Animal [species=Parrot, category=Bird], age=8, price=100.5, owner=null]
+Nothing was added
+Added Pet [name=Eric, animal=Animal [species=Halibut, category=Fish], age=4, price=123.0, owner=null]
+Nothing was added
+Nothing was added
+Added Pet [name=Rusty, animal=Animal [species=Pug, category=Dog], age=7, price=1921.0, owner=null]
+Color added
+Color added
+Color added
+Color wasn't added
+Color added
+Color wasn't added
+Pet sold
+Pet sold
+Pet wasn't sold
+Pet returned
+Pet wasn't returned
+Cash at the end: 123.0
