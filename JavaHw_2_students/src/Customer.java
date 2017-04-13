@@ -2,9 +2,6 @@ import java.util.ArrayList;
 import java.util.Objects;
 /**
  * Class for customers details 
- */
-
-/**
  * @author Java spring 2017
  */
 public class Customer {
