@@ -83,10 +83,8 @@ public class SysData {
 	 * @return The animal that was added, null if unsuccessful
 	 */
 	public Animal addAnimal(String species, String category) {
+                if (getAnimal(species, category) != null) return null;
 		Animal animalToAdd = new Animal(species, E_Category.getCategory(category));
-                for (Animal an : animals)
-                    if (an.equals(animalToAdd))
-                        return null;
                 return animals.add(animalToAdd) ? animalToAdd : null;
 	}
 	/**
@@ -102,7 +100,7 @@ public class SysData {
 	 * @return The pet that was created
 	 */
 	public Pet addPet(String name, String species, String category, int day, int month, int year, String description, double price) {
-            Animal animal = new Animal(species, E_Category.getCategory(category));
+            Animal animal = getAnimal(species, category);
             Calendar birthday = Calendar.getInstance();
             birthday.set(year, month, day);
             Pet petToAdd = new Pet(name, animal, birthday, description, price);
@@ -125,7 +123,7 @@ public class SysData {
 		Color colorToAdd = new Color(r, g, b);
                 Pet petC;
                 boolean flag = false;
-                Pet animal = new Pet(name ,new Animal(species, E_Category.getCategory(category)));
+                Pet animal = new Pet(name ,getAnimal(species, category));
                 for (Pet p : petsInventory)
                     if (p.equals(animal)) {
                         petC = p;
@@ -168,7 +166,11 @@ public class SysData {
 	 * @return Animal from ArrayList, null if doesn't exists
 	 */
 	public Animal getAnimal(String species, String category) {
-		//TODO Complete this method
+		Animal animal = new Animal(species, E_Category.getCategory(category));
+                for (Animal an : animals)
+                    if (an.equals(animal))
+                        return an;
+                return null;
 	}
 	/**
 	 * Gets the requested pet
@@ -177,7 +179,11 @@ public class SysData {
 	 * @return The pet from ArrayList, null if doesn't exists
 	 */
 	public Pet getPet(String name, Animal animal) {
-		//TODO Complete this method
+                Pet pet = new Pet(name, animal);
+		for (Pet p : petsInventory)
+                    if (p.equals(pet))
+                        return p;
+                return null;
 	}
 	/**
 	 * Gets the requested customer
