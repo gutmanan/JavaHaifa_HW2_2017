@@ -83,7 +83,11 @@ public class SysData {
 	 * @return The animal that was added, null if unsuccessful
 	 */
 	public Animal addAnimal(String species, String category) {
-		//TODO Complete this method
+		Animal animalToAdd = new Animal(species, E_Category.getCategory(category));
+                for (Animal an : animals)
+                    if (an.equals(animalToAdd))
+                        return null;
+                return animals.add(animalToAdd) ? animalToAdd : null;
 	}
 	/**
 	 * Adding a new pet to the shop
@@ -98,7 +102,14 @@ public class SysData {
 	 * @return The pet that was created
 	 */
 	public Pet addPet(String name, String species, String category, int day, int month, int year, String description, double price) {
-		//TODO Complete this method
+            Animal animal = new Animal(species, E_Category.getCategory(category));
+            Calendar birthday = Calendar.getInstance();
+            birthday.set(year, month, day);
+            Pet petToAdd = new Pet(name, animal, birthday, description, price);
+            for (Pet p : petsInventory)
+                if (p.equals(petToAdd))
+                    return null;
+            return petsInventory.add(petToAdd) ? petToAdd : null;
 	}
 	/**
 	 * Add color to pet, cannot add the same color twice
@@ -111,7 +122,23 @@ public class SysData {
 	 * @return True if color was set successfully
 	 */
 	public boolean addColorToPet(String name, String species, String category, int r, int g, int b) {
-		//TODO Complete this method
+		Color colorToAdd = new Color(r, g, b);
+                Pet petC;
+                boolean flag = false;
+                Pet animal = new Pet(name ,new Animal(species, E_Category.getCategory(category)));
+                for (Pet p : petsInventory)
+                    if (p.equals(animal)) {
+                        petC = p;
+                        flag = true;
+                    }
+                
+                if (!flag) return false;    //  Pet wasn't found in petsInventory
+                
+                for (Color c : petC.colors)
+                    if (c.equals(colorToAdd))
+                        return false;       //  the color is already exists
+                
+                return petC.colors.add(colorToAdd);
 	}
 	/**
 	 * Selling a pet to a customer
