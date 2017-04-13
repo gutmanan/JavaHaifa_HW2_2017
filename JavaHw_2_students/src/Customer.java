@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 /**
  * Class for customers details 
  */
@@ -12,15 +13,15 @@ public class Customer {
 	/**
 	 * Customer name
 	 */
-	**** String name;
+	public String name;
 	/**
 	 * Customer phone number
 	 */
-	**** String phone;
+	private String phone;
 	/**
 	 * The customers pets
 	 */
-	**** ArrayList<Pet> pets;
+	private ArrayList<Pet> pets;
 	/**
 	 * Full constructor
 	 * @param name Customer name
@@ -47,8 +48,8 @@ public class Customer {
 	/**
 	 * @param phone The customer's phone number
 	 */
-	**** void setPhone(String phone) {
-		//TODO Complete this method
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
@@ -60,8 +61,21 @@ public class Customer {
 	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
-	@Override
-	**** boolean equals(Object obj) {
-		//TODO Complete this method
-	}
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) {
+                return true;
+            }
+            if (obj == null) {
+                return false;
+            }
+            if (getClass() != obj.getClass()) {
+                return false;
+            }
+            final Customer other = (Customer) obj;
+            if (!Objects.equals(this.phone, other.phone)) {
+                return false;
+            }
+            return true;
+        }
 }
