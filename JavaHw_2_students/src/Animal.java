@@ -1,3 +1,6 @@
+
+import java.util.Objects;
+
 /**
  * Animal type: Parrot, Dog, Cat etc...
  * @author Java spring 2017
@@ -36,6 +39,23 @@ public class Animal {
      */
     @Override
     public boolean equals(Object obj) {
-            //TODO Complete this method
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Animal other = (Animal) obj;
+        if (!Objects.equals(this.species, other.species)) {
+            return false;
+        }
+        if (this.category != other.category) {
+            return false;
+        }
+        return true;
     }
+    
 }
