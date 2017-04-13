@@ -5,7 +5,7 @@ import java.util.Objects;
  * @author Java spring 2017
  */
 public class Customer {
-    //TODO Determine the access level of the class members.
+    // TODO Determine the access level of the class members.
     // Replace all **** with public, private or protected
     /**
      * Customer name

@@ -1,8 +1,5 @@
 /**
  * Constants for use in the program
- */
-
-/**
  * @author Java spring 2017
  */
 public class Constants {
