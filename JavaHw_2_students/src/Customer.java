@@ -48,6 +48,11 @@ public class Customer {
     public void setPhone(String phone) {
             this.phone = phone;
     }
+    
+    public ArrayList<Pet> getPets() {
+    	return this.pets;
+    }
+    
     /* (non-Javadoc)
      * @see java.lang.Object#toString()
      */

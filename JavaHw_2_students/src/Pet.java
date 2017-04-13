@@ -80,7 +80,7 @@ public class Pet {
      * @param owner Customer to set as the owner
      */
     public void setOwner(Customer owner) {
-        //TODO Complete this method
+        this.owner = owner;
     }
     /**
      * @return Pet price
