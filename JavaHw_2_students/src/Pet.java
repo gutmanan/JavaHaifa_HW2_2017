@@ -55,6 +55,7 @@ public class Pet {
         this.birthday = birthday;
         this.description = description;
         this.price = price;
+        this.colors = new ArrayList<>();
     }
     /**
      * Partial constructor
@@ -65,6 +66,7 @@ public class Pet {
         this.name = name;
         this.animal = animal;
         this.birthday = null;
+        this.colors = new ArrayList<>();
     }
     /**
      * @return Pet owner
